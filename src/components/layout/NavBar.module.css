@@ -1,0 +1,39 @@
+.active {
+  color: white;
+  border-bottom: 1px solid;
+  text-shadow: 2px 2px 4px #004d44ab;
+  background: linear-gradient(180deg, transparent 70%, #21d77d45 85%, #21d5d775 100%);
+}
+
+.link {
+  padding-inline: 0.5rem;
+  align-items: center;
+  display: flex
+}
+
+.cart {
+  background: white;
+  padding: .4rem;
+  transform: scale(1.1);
+  border-radius: 50%;
+}
+
+.iconCont {
+  position: absolute;
+  right: -.5rem;
+  bottom: -.5rem;
+}
+
+.iconNumb {
+  background: #008080;
+  border: 2px solid white;
+  color: white;
+  aspect-ratio: 1;
+  width: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: medium;
+  font-weight: 700;
+}

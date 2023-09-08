@@ -1,0 +1,30 @@
+.main {
+  padding-top: 4rem !important;
+  padding-inline: 2rem;
+  padding-bottom: 2rem;
+}
+
+.sidebar {
+  justify-content: center;
+  padding-top: 4rem !important;
+  padding-inline: 2rem;
+  padding-bottom: 2rem;
+}
+
+.heading {
+  font-family: Roboto;
+  color: teal;
+  font-weight: lighter;
+  text-align: center;
+  font-style: initial;
+}
+
+.imgContainer {
+  display: flex;
+  justify-content: center;
+  padding-block: 2rem;
+  border: 1px solid;
+  border-radius: 1rem;
+  margin-block: 2rem;
+}
+

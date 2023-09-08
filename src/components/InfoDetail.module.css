@@ -1,0 +1,23 @@
+.card {
+    font-family: ;
+}
+
+.typ {
+    margin-block: 1rem;
+    font-family: '__Josefin_Sans_c35521'
+}
+
+.cards{
+    padding: 2rem;
+}
+
+.button {
+    background: teal;
+    color: white;
+}
+
+.button:hover {
+    background: white;
+    color: teal;
+    border: 1px solid teal;
+}

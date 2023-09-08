@@ -1,0 +1,18 @@
+.input {
+    display: flex;
+    flex-direction: column;
+}
+
+.error {
+    color: red;
+    font-family: Roboto;
+    font-weight: lighter;
+}
+
+.form {
+    
+}
+
+.input {
+    margin-block: 1rem
+}

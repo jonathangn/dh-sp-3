@@ -1,0 +1,16 @@
+.button {
+    background: teal;
+
+
+}
+
+.button:hover {
+    background: inherit;
+    border: 1px solid teal;
+    color: teal
+}
+
+.tabs {
+    color: teal;
+    width: max-content
+}
