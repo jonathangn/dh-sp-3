@@ -1,6 +1,8 @@
+'use client'
 import * as React from 'react';
 import ReactMarkdown from 'markdown-to-jsx';
 import Typography from '@mui/material/Typography';
+import type { MDXComponents } from 'mdx/types'
 import Link from '@mui/material/Link';
 import Box from '@mui/material/Box';
 
@@ -46,5 +48,15 @@ const options = {
 };
 
 export default function Markdown(props: any) {
-  return <ReactMarkdown options={options} {...props} />;
+  return (
+    <>
+      <ReactMarkdown options={options} {...props} />;
+    </>
+  )
 }
+
+// export default function Markdown(components: MDXComponents): MDXComponents {
+//   return {
+//     ...components,
+//   }
+// }

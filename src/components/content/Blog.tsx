@@ -1,3 +1,4 @@
+'use client'
 import * as React from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
 import Grid from '@mui/material/Grid';
@@ -74,22 +75,22 @@ export default function Blog() {
     <ThemeProvider theme={defaultTheme}>
       <CssBaseline />
       <Header title="Blog" sections={sections} />
-      <main style={{ marginBottom: "3rem" }}>
-        <MainFeaturedPost post={mainFeaturedPost} />
-        <Grid container spacing={4}>
-          {featuredPosts.map((post) => (
-            <FeaturedPost key={post.title} post={post} />
-          ))}
-        </Grid>
-        <Grid container spacing={5} sx={{ mt: 3 }}>
-          <Main title="From the firehose" posts={posts} />
-          <Sidebar
-            title={sidebar.title}
-            description={sidebar.description}
-            archives={sidebar.archives}
-          />
-        </Grid>
-      </main>
+      {/* <main style={{ marginBottom: "3rem" }}> */}
+      <MainFeaturedPost post={mainFeaturedPost} />
+      <Grid container spacing={4}>
+        {featuredPosts.map((post) => (
+          <FeaturedPost key={post.title} post={post} />
+        ))}
+      </Grid>
+      <Grid container spacing={5} sx={{ mt: 3 }}>
+        <Main title="From the firehose" posts={posts} />
+        <Sidebar
+          title={sidebar.title}
+          description={sidebar.description}
+          archives={sidebar.archives}
+        />
+      </Grid>
+      {/* </main> */}
     </ThemeProvider>
   );
 }
