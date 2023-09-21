@@ -4,9 +4,9 @@ import Grid from '@mui/material/Grid';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import MainFeaturedPost from './MainFeaturedPost';
 import FeaturedPost from '@/components/content/FeaturedPost';
-import post1 from './posts/blog-post1.md';
-import post2 from './posts/blog-post2.md';
-import post3 from './posts/blog-post3.md';
+// import post1 from './posts/blog-post1.md';
+// import post2 from './posts/blog-post2.md';
+// import post3 from './posts/blog-post3.md';
 
 const sections = [
   { title: 'Eventos', url: '#' },
@@ -15,9 +15,9 @@ const sections = [
 ];
 
 const mainFeaturedPost = {
-  title: 'Última Publicación',
+  title: 'Beneficios para tu salud',
   description:
-    "Multiple lines of text that form the lede, informing new readers quickly and efficiently about what's most interesting in this post's contents.",
+    "Beber una copa al día disminuye la probabilidad de padecer alguna enfermedad cardiovascular ya que aumenta los niveles de 'colesterol bueno'.",
   image: 'https://source.unsplash.com/random?wallpapers',
   imageText: 'main image description',
   linkText: 'Continuar leyendo',
@@ -62,7 +62,7 @@ const featuredPosts = [
   },
 ];
 
-const posts = [post1, post2, post3];
+// const posts = [post1, post2, post3];
 
 const sidebar = {
   title: 'Suscríbete',
