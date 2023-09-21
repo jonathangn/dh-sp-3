@@ -1,8 +1,10 @@
+import { TUserLog } from "@/data/types";
 import type { NextAuthOptions } from "next-auth";
 import { decode, encode } from "next-auth/jwt";
 import CredentialsProvider from "next-auth/providers/credentials";
 
 export const authOptions: NextAuthOptions = {
+    // export const authOptions = {
     session: {
         strategy: "jwt",
     },
@@ -52,9 +54,9 @@ export const authOptions: NextAuthOptions = {
         },
 
         async session({ session, token, user }) {
-            // if (token) {
-            //     session.user = token.user
-            // }
+            if (token) {
+                session.user = token
+            }
             return session // The return type will match the one returned in `useSession()`
         },
     },

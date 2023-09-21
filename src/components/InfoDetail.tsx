@@ -4,7 +4,7 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import { Button, CardActionArea } from "@mui/material";
+import { Button } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
 import styles from "./InfoDetail.module.css"
 import { TProductCart } from "@/data/types";
@@ -25,7 +25,7 @@ export default function InfoDetail(product: TProductCart) {
     <Grid container spacing={2}>
       <Grid >
         <Card sx={{ margin: "auto", display: 'flex', flexDirection: 'row' }} className={styles.card}>
-          <CardActionArea>
+          <div>
             <CardMedia
               component="img"
               height="400"
@@ -34,7 +34,7 @@ export default function InfoDetail(product: TProductCart) {
               style={{ objectFit: 'contain' }}
             />
 
-          </CardActionArea>
+          </div>
           <CardContent style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-evenly' }}>
             <Typography gutterBottom variant="h5" component="div">
               {product?.name}

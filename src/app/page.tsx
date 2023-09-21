@@ -17,6 +17,7 @@ import { CATEGORIES, PRODUCTS, assetsAds, assetsHero } from "@/data/data";
 // import { useGlobalContext } from "@/contexts/store";
 import { useEffect } from "react";
 import { TProductCart } from "@/data/types";
+import { useSession } from "next-auth/react";
 
 const poppins = Poppins({
   weight: ["300", "400"],
@@ -105,6 +106,7 @@ async function getProducts() {
 }
 
 export default async function Home() {
+
   // useEffect(() => {
   //   const { productsStore } = useGlobalContext()
 

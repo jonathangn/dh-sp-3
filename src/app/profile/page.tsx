@@ -12,6 +12,7 @@ import Image from "next/image";
 // import { makeStyles } from "@material-ui/styles";
 // import GeneralSettings from "./GeneralSettiings";
 import FormProfile from "../../components/profile/FormProfile";
+import { useSession } from "next-auth/react";
 
 
 const profile = {
@@ -64,8 +65,11 @@ const contacts = [
 // }));
 
 export default function App() {
+  const { data } = useSession()
   const [isOpen, setisOpened] = React.useState(false);
   const [contact, setContact] = React.useState(profile);
+
+  console.log(data, 'inProfile')
   //   const classes = useStyles();
   //   function openSettings(item) {
   //     console.log(item);
@@ -86,7 +90,7 @@ export default function App() {
               Detalles del Perfil
             </h1>
             <div className={styles.imgContainer}>
-              <Image src="/thirteen.svg" width={200} height={200} alt="person" ></Image>
+              <Image src="/images/brand/logo-berebere-1.png" width={200} height={200} alt="person" ></Image>
             </div>
           </div>
         </Grid>

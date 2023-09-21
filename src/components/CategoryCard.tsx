@@ -3,14 +3,12 @@ import Card from "@mui/joy/Card";
 import Typography from "@mui/joy/Typography";
 import { TCategory } from "@/data/types";
 import ButtonBase from "@mui/material/ButtonBase";
-import { CardActionArea } from "@mui/material";
 import Link from "next/link";
 
 export default function BasicCard(category: TCategory) {
   return (
     <Card orientation="horizontal" style={{ borderRadius: '50% 50% 1rem 1rem' }}>
-      <CardActionArea component={Link} style={{ padding: '.5rem' }} href={`/products#${category.name}`}>
-
+      <Link style={{ padding: '.5rem' }} href={`/products#${category.name}`} >
         <div>
           <img
             width={150}
@@ -20,7 +18,7 @@ export default function BasicCard(category: TCategory) {
           />
           <Typography level="title-lg" style={{ textAlign: 'center' }}>{category.title}</Typography>
         </div>
-      </CardActionArea>
+      </Link>
     </Card>
   );
 }

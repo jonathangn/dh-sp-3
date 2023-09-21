@@ -79,4 +79,11 @@ export type TUser = {
     password: string
 }
 
+export type TUserLog = {
+    dni: string,
+    first_name: string,
+    last_name: string,
+    email: string,
+    Role: string
+}
 

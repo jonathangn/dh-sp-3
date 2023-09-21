@@ -2,12 +2,12 @@ import * as React from 'react';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import Card from '@mui/material/Card';
-import CardActionArea from '@mui/material/CardActionArea';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import { teal } from '@mui/material/colors';
 import { Box } from '@mui/material';
 import styles from './Blog.module.css'
+import Link from 'next/link';
 
 interface FeaturedPostProps {
   post: {
@@ -25,7 +25,7 @@ export default function FeaturedPost(props: FeaturedPostProps) {
 
   return (
     <Grid item xs={12} md={3} >
-      <CardActionArea component="a" href={post.linkText} target="_blank"  >
+      <Link href={post.linkText} target="_blank"  >
         <Box sx={{ display: 'flex', position: 'relative' }}  >
           <img
             src={post.image}
@@ -65,7 +65,7 @@ export default function FeaturedPost(props: FeaturedPostProps) {
             </Typography>
           </Box>
         </Box>
-      </CardActionArea>
+      </Link>
     </Grid>
   );
 }

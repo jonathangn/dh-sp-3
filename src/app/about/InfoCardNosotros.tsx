@@ -3,8 +3,8 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { CardActionArea } from '@mui/material';
 import styles from "./InfoCard.module.css"
+import Link from 'next/link';
 
 interface TPerson {
   redes: string
@@ -16,7 +16,7 @@ interface TPerson {
 export default function InfoCardNosotros(person: TPerson) {
   return (
     <Card sx={{ maxWidth: 125, margin: "auto" }} className={styles.card}>
-      <CardActionArea href={person?.redes} target="_blank">
+      <Link href={person?.redes} target="_blank">
         <CardMedia
           component="img"
           height="125"
@@ -31,7 +31,7 @@ export default function InfoCardNosotros(person: TPerson) {
             {product?.description}
           </Typography> */}
         </CardContent>
-      </CardActionArea>
+      </Link>
     </Card>
   );
 }

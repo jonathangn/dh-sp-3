@@ -285,11 +285,13 @@ function NavBar() {
                 session?.user ? (
                   <>
                     <MenuItem component={Link} href={`/profile`}>
-                      <Typography textAlign="center">Perfil</Typography>
+                      <Typography textAlign="center">Mi Perfil</Typography>
                     </MenuItem>
-                    <MenuItem component={Link} href={`/dashboard`}>
-                      <Typography textAlign="center">Reportes</Typography>
-                    </MenuItem>
+                    {session?.user?.user?.Role === 'admin' ? (
+                      <MenuItem component={Link} href={`/dashboard`}>
+                        <Typography textAlign="center">Reportes</Typography>
+                      </MenuItem>
+                    ) : <></>}
                     <MenuItem component={Button} onClick={() => signOut()}>
                       <Typography textAlign="center" textTransform="none">Cerrar sesión</Typography>
                     </MenuItem>

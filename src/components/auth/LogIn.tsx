@@ -83,7 +83,7 @@ export default function LogIn() {
         //     localStorage.setItem('userRole', JSON.stringify(res));
         // }        
         console.log(dataSession)
-        // return router.push('/')
+        return router.push('/')
       }
     });
     console.log(resSignIn, 'resSignIn')
@@ -137,7 +137,7 @@ export default function LogIn() {
               helperText={errors?.Password?.message}
             />
             <>
-              {errors?.Password?.type === "required" && <small style={{ color: '#d32f2f' }}>El campo es requerido</small>}
+              {errors?.Password?.type === "required" && <small>El campo es requerido</small>}
             </>
 
             {/* <FormControlLabel

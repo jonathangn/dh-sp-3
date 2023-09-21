@@ -2,14 +2,14 @@ import * as React from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import { CardActionArea } from '@mui/material';
 import styles from "./InfoCard.module.css"
 import { TProductCart } from '@/data/types';
+import Link from 'next/link';
 
 export default function InfoCard(product: TProductCart) {
   return (
     <Card sx={{ maxWidth: 345, margin: "auto" }} className={styles.card}>
-      <CardActionArea href={`/products/${product?.slug}`} >
+      <Link href={`/products/${product?.slug}`} >
         <CardMedia
           component="img"
           height="250"
@@ -24,7 +24,7 @@ export default function InfoCard(product: TProductCart) {
             {product?.description}
           </Typography> */}
         </CardContent>
-      </CardActionArea>
+      </Link>
     </Card>
   );
 }
