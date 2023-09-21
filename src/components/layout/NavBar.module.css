@@ -11,11 +11,22 @@
   display: flex
 }
 
+.cartBtn {
+  @media (max-width: '400px') {
+    position: fixed;
+    bottom: 2rem;
+    right: 2.5rem;
+    z-index: 10;
+    transform: scale(1.2);
+  }
+}
+
 .cart {
   background: white;
   padding: .4rem;
   transform: scale(1.1);
   border-radius: 50%;
+  border: 1px solid teal
 }
 
 .iconCont {
@@ -36,4 +47,9 @@
   border-radius: 50%;
   font-size: medium;
   font-weight: 700;
+}
+
+.logo-avatar {
+  width: 120px;
+  height: 60px;
 }

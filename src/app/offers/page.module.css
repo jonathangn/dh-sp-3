@@ -1,0 +1,9 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 70vh;
+  overflow: hidden;
+  background: linear-gradient(transparent 1%, white 3%);
+  margin-bottom: 5vh;
+}

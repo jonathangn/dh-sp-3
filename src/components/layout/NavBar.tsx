@@ -9,27 +9,21 @@ import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-
-import SearchIcon from "@mui/icons-material/Search";
-import AdbIcon from "@mui/icons-material/Adb";
-import LocalDrinkIcon from "@mui/icons-material/LocalDrink";
 import { teal, purple } from "@mui/material/colors";
 import { createTheme, makeStyles, ThemeProvider } from "@mui/material/styles";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-
 import styles from "./NavBar.module.css";
-import { inherits } from "util";
-import { Josefin_Sans } from "next/font/google";
 import { useGlobalContext } from "@/contexts/store";
+import { Poppins } from "next/font/google";
+import { useSession, signIn, signOut } from "next-auth/react";
+import Button from "@mui/material/Button";
 
 const pages = ["Inicio", "Productos", "Eventos", "Promociones", "Blog"];
-const settings = ["Cuenta", "Dashboard", "Cerrar sesión"];
 
-const josefin_Sans = Josefin_Sans({
+const poppins = Poppins({
   weight: ["300", "400"],
   style: ["normal", "italic"],
   subsets: ["latin"],
@@ -42,19 +36,13 @@ const theme = createTheme({
   },
   typography: {
     fontSize: 16,
-    fontFamily: josefin_Sans.style.fontFamily,
+    fontFamily: poppins.style.fontFamily,
   },
 });
 
-// const useStyles = makeStyles({
-//   button: {
-//     "&.active": {
-//       background: "black",
-//     },
-//   },
-// });
-
 function NavBar() {
+  const { data: session } = useSession()
+
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
@@ -90,7 +78,6 @@ function NavBar() {
   return (
     <AppBar
       position="static"
-      // theme={theme}
       style={{
         color: "whitesmoke",
         fontSize: "xx-large",
@@ -139,30 +126,50 @@ function NavBar() {
                 display: { xs: "block", md: "none" },
               }}
             >
-              <MenuItem>
-                <Link href="/">Inicio</Link>
-              </MenuItem>
-              <MenuItem>
-                <Link href="/products">Productos</Link>
-              </MenuItem>
-              <MenuItem>
+              <Link
+                href="/"
+                className={`${pathname == "/" ? styles.activeMov : ""} ${styles.linkMov
+                  }`}
+              >
+                <Typography fontWeight="bold" textAlign="center" >
+                  Inicio
+                </Typography>
+              </Link>
+
+              <Link
+                href="/products"
+                className={`${pathname == "/products" ? styles.activeMov : ""} ${styles.linkMov
+                  }`}
+              >
+                <Typography fontWeight="bold" textAlign="center" >
+                  Productos
+                </Typography>
+              </Link>
+              {/* <MenuItem>
                 <Link href="/offers">Ofertas</Link>
-              </MenuItem>
-              <MenuItem>
-                <Link href="/about">Nosotros</Link>
-              </MenuItem>
-              <MenuItem>
-                <Link href="/blog">Blog</Link>
-              </MenuItem>
+              </MenuItem> */}
+              <Link
+                href="/about"
+                className={`${pathname == "/about" ? styles.activeMov : ""} ${styles.link
+                  }`}
+              >
+                <Typography fontWeight="bold" textAlign="center" >
+                  Nosotros
+                </Typography>
+              </Link>
+
+              <Link
+                href="/blog"
+                className={`${pathname == "/blog" ? styles.activeMov : ""} ${styles.link
+                  }`}
+              >
+                <Typography fontWeight="bold" textAlign="center" >
+                  Blog
+                </Typography>
+              </Link>
             </Menu>
           </Box>
           <Typography
-            // component="h2"
-            // variant="h5"
-            // color="inherit"
-            // align="center"
-            // noWrap
-            // sx={{ flex: 1 }}
             variant="h5"
             noWrap
             component="a"
@@ -217,7 +224,7 @@ function NavBar() {
               </Typography>
             </Link>
 
-            <Link
+            {/* <Link
               href="/offers"
               className={`${pathname == "/offers" ? styles.active : ""} ${styles.link
                 }`}
@@ -225,7 +232,7 @@ function NavBar() {
               <Typography fontWeight="bold" textAlign="center" >
                 Ofertas
               </Typography>
-            </Link>
+            </Link> */}
 
             <Link
               href="/about"
@@ -250,8 +257,8 @@ function NavBar() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <>
-                <IconButton onClick={handleOpenModal} sx={{ p: 0 }}>
-                  <Avatar className={styles.cart} alt="Remy Sharp" src="/images/avatar/cart.jpg" />
+                <IconButton onClick={handleOpenModal} className={styles.cartBtn} sx={{ p: 0 }}>
+                  <Avatar className={styles.cart} alt="cart icon" src="/images/avatar/cart.jpg" />
                   <div className={styles.iconCont}><span className={styles.iconNumb}>{itemsNumber}</span></div>
                 </IconButton>
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
@@ -274,12 +281,24 @@ function NavBar() {
               }}
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
-            >
-              {settings?.map((setting) => (
-                <MenuItem component={Link} href={`/${setting}`} key={setting}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
+            >{
+                session?.user ? (
+                  <>
+                    <MenuItem component={Link} href={`/profile`}>
+                      <Typography textAlign="center">Perfil</Typography>
+                    </MenuItem>
+                    <MenuItem component={Link} href={`/dashboard`}>
+                      <Typography textAlign="center">Reportes</Typography>
+                    </MenuItem>
+                    <MenuItem component={Button} onClick={() => signOut()}>
+                      <Typography textAlign="center" textTransform="none">Cerrar sesión</Typography>
+                    </MenuItem>
+                  </>
+                ) :
+                  <MenuItem component={Link} href={`/auth`}>
+                    <Typography textAlign="center">Iniciar sesión</Typography>
+                  </MenuItem>
+              }
             </Menu>
           </Box>
         </Toolbar>

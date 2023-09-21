@@ -5,6 +5,7 @@ import Grid from '@mui/material/Grid';
 import Link from '@mui/material/Link';
 import Box from '@mui/material/Box';
 import { grey } from '@mui/material/colors';
+import styles from './Blog.module.css'
 
 
 const gray = grey[50];
@@ -33,11 +34,14 @@ export default function MainFeaturedPost(props: MainFeaturedPostProps) {
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
         backgroundImage: `url(${post.image})`,
+        borderRadius: '1rem'
       }}
+
     >
       {/* Increase the priority of the hero background image */}
       {<img style={{ display: 'none' }} src={post.image} alt={post.imageText} />}
       <Box
+        className={styles.cardPost}
         sx={{
           position: 'absolute',
           top: 0,
@@ -62,7 +66,7 @@ export default function MainFeaturedPost(props: MainFeaturedPostProps) {
             <Typography variant="h5" color="inherit" paragraph>
               {post.description}
             </Typography>
-            <Link variant="subtitle1" href="#" sx={{color: gray}}>
+            <Link variant="subtitle1" href="#" sx={{ color: gray }}>
               {post.linkText}
             </Link>
           </Box>

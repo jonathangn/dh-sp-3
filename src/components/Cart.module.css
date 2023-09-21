@@ -1,0 +1,44 @@
+.nthItems {
+    color: white;
+    aspect-ratio: 1;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: .5rem;
+    font-family: 'Poppins';
+    background: teal;
+    padding: .3rem;
+    margin: auto;
+}
+
+.cartImg {
+    width: 40px;
+    height: 100px;
+    object-fit: cover;
+    margin-right: 1rem;
+}
+
+.total {
+    font-family: 'Poppins';
+    display: flex;
+    justify-content: center;
+    background: teal;
+    color: white;
+}
+
+.actions {
+    display: flex;
+    justify-content: space-around;
+    height: 3.5rem;
+}
+
+.action {
+    background: teal;
+    color: white;
+}
+
+.action:hover {
+    color: teal;
+    border: 1px solid teal;
+}

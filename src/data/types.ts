@@ -14,21 +14,34 @@ export type TProduct = {
 }
 
 export type TProductCart = {
-    _id: number,
+    id: number,
     product_code: string,
     name: string,
     brand: string,
     model: string,
-    urlImg: string,
     alcohol_content: number,
     origin: string,
     price: number,
-    category: string,
     description: string,
-    creator: string,
+    image_id: string,
+    Category: string,
     top: boolean,
     slug: string,
-    quantity?: number
+    quantity: number
+}
+
+export type TProductApi = {
+    id: number,
+    product_code: string,
+    name: string,
+    brand: string,
+    model: string,
+    alcohol_content: number,
+    origin: string,
+    price: number,
+    description: string,
+    image_id: string,
+    Category: string,
 }
 
 export type TImage = {
@@ -49,7 +62,11 @@ export type TPurchaseOrder = {
 
 export type TCategory = {
     id: number,
-    name: string
+    title: string,
+    name: string,
+    description: string,
+    urlImg: string,
+    updated: string,
 }
 
 export type TUser = {

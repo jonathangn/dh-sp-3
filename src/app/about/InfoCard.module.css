@@ -1,0 +1,11 @@
+.card {
+    font-family: 'Poppins';
+    border: none;
+}
+
+.nombreCategoria{
+    font-size: 14px;
+    text-align: center;
+    font-family: 'Poppins';
+    color: black;
+}

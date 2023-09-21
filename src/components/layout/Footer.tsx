@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import * as React from "react";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
@@ -6,50 +6,47 @@ import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import { Facebook, Instagram, Twitter } from "@mui/icons-material";
 import { Box } from "@mui/material";
-import styles from "./Footer.module.css"
+import styles from "./Footer.module.css";
 
 export default function Footer() {
   return (
     <Box
       component="footer"
       sx={{
-        // backgroundColor: (theme) =>
-        //   theme.palette.mode === "light"
-        //     ? theme.palette.grey[200]
-        //     : theme.palette.grey[800],
-        // p: 6,
-        background: "linear-gradient(360deg, rgb(0, 128, 128), rgb(47, 97, 100) 99%, black)",
-        p: 6,
+        background: "#112727",
+        p: 3,
       }}
     >
-      <Container maxWidth="lg">
+      <Container>
         <Grid container spacing={5}>
-          <Grid item xs={12} sm={4} >
-            <Typography variant="h6" className={styles.h} color="text.primary" gutterBottom>
-              Acerca de
-            </Typography>
-            <Typography variant="body2" className={styles.h} color="text.secondary">
-              Somos el equipo BereBere, y presentamos este proyecto para aprobar la cursada en DH. Elegimos un Ecommerce donde comercializamos bebidas con y sin alcohól principalmente para eventos.
-            </Typography>
+          <Grid item xs={12} sm={4} className={styles.customGrid}>
+            <div className={`${styles.h} ${styles.titleText}`}>Acerca de Bere Bere</div>
+            <div className={`${styles.h} ${styles.smallTextNosotros}`}>
+              Somos una plataforma de comercio especializada en la venta de
+              bebidas para eventos. Ofrecemos una amplia selección de bebidas
+              alcohólicas y no alcohólicas para satisfacer las necesidades de
+              nuestros clientes en los diferentes tipos de eventos: como fiestas,
+              celebraciones, bodas, reuniones corporativas y más.
+            </div>
           </Grid>
-          <Grid item xs={12} sm={4} >
-            <Typography variant="h6" className={styles.h}  color="text.primary" gutterBottom>
-              Contáctanos
-            </Typography>
-            <Typography variant="body2" className={styles.h} color="text.secondary">
+
+          <Grid item xs={12} sm={4}>
+            <div className={`${styles.h} ${styles.titleText}`}>Contáctanos</div>
+            <div className={`${styles.h} ${styles.smallText}`}>
               Avenida siempre viva, Springfield, USA
-            </Typography>
-            <Typography variant="body2" className={styles.h} color="text.secondary">
+            </div>
+            <div className={`${styles.h} ${styles.smallText}`}>
               Correo electrónico: info@berebere.com
-            </Typography>
-            <Typography variant="body2" className={styles.h} color="text.secondary">
+            </div>
+            <div className={`${styles.h} ${styles.smallText}`}>
               WhatsApp: +34 234 567890
-            </Typography>
+            </div>
           </Grid>
+
           <Grid item xs={12} sm={4} className={styles.h}>
-            <Typography variant="h6" className={styles.h} color="text.primary" gutterBottom>
+            <div className={`${styles.h} ${styles.titleTextRedes}`}>
               Síguenos
-            </Typography>
+            </div>
             <Link href="https://www.facebook.com/" color="inherit">
               <Facebook />
             </Link>
@@ -63,18 +60,16 @@ export default function Footer() {
             <Link href="https://www.twitter.com/" color="inherit">
               <Twitter />
             </Link>
+            <div className={`${styles.h} ${styles.smallTextNosotros}`}>
+              {"Derechos reservados © "}
+              <Link color="inherit" href="https://berebere.com/">
+                Bere Bere
+              </Link>{" "}
+              {new Date().getFullYear()}
+              {"."}
+            </div>
           </Grid>
         </Grid>
-        <Box mt={5}>
-          <Typography className={styles.h}  variant="body2" color="text.secondary" align="center">
-            {"Derechos reservados © "}
-            <Link color="inherit" href="https://berebere.com/">
-              Bere Bere
-            </Link>{" "}
-            {new Date().getFullYear()}
-            {"."}
-          </Typography>
-        </Box>
       </Container>
     </Box>
   );

@@ -1,5 +1,20 @@
 .gridCont {
     margin-block: 3rem;
-    border: 2px solid rgba(0, 128, 128, 0.1);
+    border: 2px solid #00808036;
     padding: 1rem;
+    border-radius: .5rem;
+}
+
+.main {
+    padding: 2rem
+}
+
+.textTyp {
+    font-family: 'Poppins';
+    background: teal;
+    color: white;
+    padding: .8rem;
+    border-radius: .5rem;
+    font-weight: 500;
+    font-size: 1.2rem;
 }

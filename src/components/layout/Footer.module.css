@@ -1,5 +1,28 @@
 .h {
-    font-family: '__Josefin_Sans_c35521';
+    font-family: Poppins;
     color: white;
-    font-weight: 600;
+}
+.titleText {
+    font-size: 18px;
+    font-weight: 400;
+    text-align: center;
+    margin-bottom: 4px;
+}
+.titleTextRedes {
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 4px;
+}
+.smallTextNosotros {
+    font-size: 12px;
+    font-weight: lighter;
+    text-align: justify;
+    margin-top: 5px;
+    font-family: 'Poppins';
+}
+.smallText {
+    font-size: 12px;
+    font-weight: lighter;
+    text-align: center;
+    font-family: 'Poppins';
 }

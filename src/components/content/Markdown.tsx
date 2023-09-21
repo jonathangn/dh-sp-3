@@ -48,15 +48,5 @@ const options = {
 };
 
 export default function Markdown(props: any) {
-  return (
-    <>
-      <ReactMarkdown options={options} {...props} />;
-    </>
-  )
+  return <ReactMarkdown options={options} {...props} />;
 }
-
-// export default function Markdown(components: MDXComponents): MDXComponents {
-//   return {
-//     ...components,
-//   }
-// }

@@ -14,7 +14,7 @@ export default function Header(props: HeaderProps) {
   const { sections, title } = props;
 
   return (
-    <>
+    <React.Fragment>
       <Tabs centered>
         {sections.map((section) => (
           <Link
@@ -29,6 +29,6 @@ export default function Header(props: HeaderProps) {
           </Link>
         ))}
       </Tabs>
-    </>
+    </React.Fragment>
   );
 }

@@ -8,12 +8,20 @@ import Register from './Register';
 import LogIn from './LogIn';
 import styles from "./TabAccess.module.css"
 import { teal } from '@mui/material/colors';
+import { styled } from "@mui/material/styles";
 
 interface TabPanelProps {
   children?: React.ReactNode;
   index: number;
   value: number;
 }
+
+const StyledTab = styled(Tab)({
+  "&.Mui-selected": {
+    color: "teal",
+    fontStyle: "italic"
+  }
+});
 
 function CustomTabPanel(props: TabPanelProps) {
   const { children, value, index, ...other } = props;
@@ -52,9 +60,9 @@ export default function BasicTabs() {
   return (
     <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }} className={styles.box}>
-        <Tabs textColor="secondary" className={styles.tabs} value={value} onChange={handleChange} aria-label="basic tabs example" TabIndicatorProps={{ style: { backgroundColor: "teal", color: "teal" } }} centered>
-          <Tab label="Regístrarse" {...a11yProps(0)} />
-          <Tab label="Iniciar sesión" {...a11yProps(1)} />
+        <Tabs className={styles.tabs} value={value} centered onChange={handleChange} aria-label="basic tabs example" TabIndicatorProps={{ style: { backgroundColor: "teal" } }} >
+          <StyledTab className={styles.tab} label="Regístrarse" {...a11yProps(0)} />
+          <StyledTab className={styles.tab} label="Iniciar sesión" {...a11yProps(1)} />
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>

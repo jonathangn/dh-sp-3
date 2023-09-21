@@ -1,64 +1,91 @@
 'use client'
-// import 'react-toastify/dist/ReactToastify.css'
-// import { ToastContainer, toast } from 'react-toastify'
 import { useGlobalContext } from '@/contexts/store'
-import * as React from 'react';
+// import * as React from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Dialog, { DialogProps } from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import DeleteIcon from '@mui/icons-material/Delete';
+import AddCircle from '@mui/icons-material/AddBox';
+import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import Divider from '@mui/material/Divider';
-import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
-import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
+import { TProductCart } from '@/data/types';
+import Typography from '@mui/material/Typography';
+import { createTheme } from '@mui/material/styles';
+import { Poppins } from 'next/font/google';
+import ClearAllIcon from '@mui/icons-material/ClearAll';
+import styles from './Cart.module.css'
+import Link from 'next/link';
+import { Router } from '@mui/icons-material';
+import { useRouter } from 'next/navigation';
+
+
+const poppins = Poppins({
+  weight: ["300", "400"],
+  style: ["normal", "italic"],
+  subsets: ["latin"],
+});
+
+const theme = createTheme({
+  typography: {
+    fontSize: 16,
+    fontFamily: poppins.style.fontFamily,
+  },
+});
 
 export default function Cart({ }) {
+
+  const router = useRouter()
   // const [maxWidth, setMaxWidth] = React.useState<DialogProps['maxWidth']>('sm');
-  const { cartItems, setCartItems, showModal, setShowModal, getCartTotal, addToCart, removeFromCart, clearCart } = useGlobalContext()
+  const { cartItems, setCartItems, showModal, setShowModal, getCartTotal, addToCart, removeFromCart, removeReference, clearCart } = useGlobalContext()
 
   const cartTotal = getCartTotal();
   const cartItemsLength = cartItems.length > 0 ?? false;
 
   const close = () => {
     setShowModal(false)
-    console.log(cartItems)
+    // console.log(cartItems)
   }
 
-  //   const notifyRemovedFromCart = (item) => toast.error(`${item.title} removed from cart!`, {
-  //     position: 'top-center',
-  //     autoClose: 2000,
-  //     hideProgressBar: true,
-  //     closeOnClick: true,
-  //     pauseOnHover: true,
-  //     draggable: true,
-  //     theme: 'colored',
-  //     style: {
-  //       backgroundColor: '#000',
-  //       color: '#fff'
-  //     }
-  //   })
+  const goToCheckout = () => {
+    router.push('/checkout')
+    setShowModal(false)
+  }
 
-  //   const notifyCartCleared = () => toast.error(`Cart cleared!`, {
-  //     position: 'top-center',
-  //     autoClose: 2000,
-  //     hideProgressBar: true,
-  //     closeOnClick: true,
-  //     pauseOnHover: true,
-  //     draggable: true,
-  //     theme: 'colored',
-  //     style: {
-  //       backgroundColor: '#000',
-  //       color: '#fff'
-  //     }
-  //   })
+  // const notifyRemovedFromCart = (item) => toast.error(`${item.title} removed from cart!`, {
+  //   position: 'top-center',
+  //   autoClose: 2000,
+  //   hideProgressBar: true,
+  //   closeOnClick: true,
+  //   pauseOnHover: true,
+  //   draggable: true,
+  //   theme: 'colored',
+  //   style: {
+  //     backgroundColor: '#000',
+  //     color: '#fff'
+  //   }
+  // })
+
+  // const notifyCartCleared = () => toast.error(`Cart cleared!`, {
+  //   position: 'top-center',
+  //   autoClose: 2000,
+  //   hideProgressBar: true,
+  //   closeOnClick: true,
+  //   pauseOnHover: true,
+  //   draggable: true,
+  //   theme: 'colored',
+  //   style: {
+  //     backgroundColor: '#000',
+  //     color: '#fff'
+  //   }
+  // })
 
   // const handleRemoveFromCart = (product) => {
   //   removeFromCart(product);
@@ -71,12 +98,19 @@ export default function Cart({ }) {
         <Dialog
           open={showModal}
           onClose={close}
+          maxWidth={'md'}
         >
-          <DialogTitle>Carrito de compras</DialogTitle>
+          <DialogTitle>
+            <Typography style={{
+              display: 'flex', alignItems: 'center', fontFamily: 'Poppins', fontWeight: '500', justifyContent: 'space-between'
+            }}>
+              CARRITO DE COMPRA
+              <Button style={{ color: 'teal' }} onClick={() => clearCart([])}>
+                <ClearAllIcon />
+              </Button>
+            </Typography>
+          </DialogTitle>
           <DialogContent>
-            <DialogContentText>
-              You can set my maximum width and whether to adapt or not.
-            </DialogContentText>
             <Box
               noValidate
               component="form"
@@ -84,64 +118,47 @@ export default function Cart({ }) {
                 display: 'flex',
                 flexDirection: 'column',
                 m: 'auto',
-                width: 'fit-content',
+                width: 'md',
               }}
             >
-              <div>
-                <h1>{`Total: ${cartTotal}`}</h1>
-                <Button onClick={() => clearCart}>
-                  Vaciar
-                </Button>
-                <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-                  {cartItems.map((item) => (
-                    <>
-                      <ListItem
-                        key={item?._id}
-                        secondaryAction={
-                          <IconButton edge="end" aria-label="delete">
-                            <DeleteIcon />
-                          </IconButton>
-                        }
-                      >
-                        {/* <ListItem alignItems="flex-start"> */}
-                        <ListItemAvatar>
-                          <Avatar alt={item?.name} src={item?.urlImg} />
-                        </ListItemAvatar>
-                        <ListItemText
-                          primary="Brunch this weekend?"
-                          secondary={
-                            <React.Fragment>
-                              <Typography
-                                sx={{ display: 'inline' }}
-                                component="span"
-                                variant="body2"
-                                color="text.primary"
-                              >
-                                Ali Connors
-                              </Typography>
-                              {" — I'll be in your neighborhood doing errands this…"}
-                              <div>
-                                <Button onClick={() => addToCart(item)}>
-                                  +
-                                </Button>
-                                <p>{item.quantity}</p>
-                                <Button onClick={() => removeFromCart(item)}>
-                                  -
-                                </Button>
-                              </div>
-                            </React.Fragment>
-                          }
-                        />
-                      </ListItem>
-                      <Divider variant="inset" component="li" />
-                    </>
-                  ))}
-                </List>
-              </div>
+              <List sx={{ width: '100%', bgcolor: 'background.paper' }}>
+                {cartItems.map((item: TProductCart) => (
+
+                  <ListItem
+                    key={item?.id}
+                    secondaryAction={
+                      <IconButton onClick={() => removeReference(item)} edge="end" aria-label="delete">
+                        <DeleteIcon />
+                      </IconButton>
+                    }
+                    style={{ justifyContent: 'space-between' }}
+                  >
+                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                      <img alt={item?.name} src={item?.image_id} className={styles.cartImg} />
+                      <Typography variant='h6' style={{ fontFamily: 'poppins' }}>{item.name}</Typography>
+                    </div>
+                    <div style={{ display: 'flex', marginLeft: '2rem' }}>
+                      <Typography variant='h5' className={styles.nthItems}>{item.quantity}</Typography>
+                      <div style={{ display: 'flex', flexDirection: 'column' }}>
+                        <Button style={{ color: 'teal' }} onClick={() => addToCart(item)}>
+                          <AddCircle />
+                        </Button>
+                        <Button style={{ color: 'teal' }} onClick={() => removeFromCart(item)}>
+                          <RemoveCircleIcon />
+                        </Button>
+                      </div>
+                    </div>
+                  </ListItem>
+                ))}
+              </List>
             </Box>
           </DialogContent>
-          <DialogActions>
-            <Button onClick={close}>Close</Button>
+          <DialogTitle className={styles.total}>
+            {`Total: ${cartTotal}`}
+          </DialogTitle>
+          <DialogActions className={styles.actions}>
+            <Button className={styles.action} onClick={close}>Cerrar</Button>
+            <Button className={styles.action} onClick={goToCheckout}>Pagar</Button>
           </DialogActions>
         </Dialog >
       </>

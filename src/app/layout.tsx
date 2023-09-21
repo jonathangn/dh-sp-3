@@ -1,7 +1,7 @@
-import "@fontsource/roboto/300.css";
-import "@fontsource/roboto/400.css";
-import "@fontsource/roboto/500.css";
-import "@fontsource/roboto/700.css";
+import "@fontsource/poppins/300.css";
+import "@fontsource/poppins/400.css";
+import "@fontsource/poppins/500.css";
+import "@fontsource/poppins/700.css";
 import "./globals.css";
 
 import { GlobalContextProvider } from "@/contexts/store";
@@ -30,7 +30,6 @@ export default function RootLayout({
     <html lang="es">
       <body>
         <NextAuthProvider>
-          {/* <SessionProvider> */}
           <GlobalContextProvider>
             <NavBar />
             <Container style={{}}>
@@ -40,11 +39,11 @@ export default function RootLayout({
                 sx={{}}
               >
                 {children}
+                <Cart />
               </Box>
             </Container>
             <Footer />
           </GlobalContextProvider>
-          {/* </SessionProvider> */}
         </NextAuthProvider>
       </body>
     </html>

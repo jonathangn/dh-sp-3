@@ -1,49 +1,59 @@
+'use client'
 import * as React from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import { Button, CardActionArea, Paper } from "@mui/material";
-import Box from "@mui/joy/Box";
+import { Button, CardActionArea } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
 import styles from "./InfoDetail.module.css"
 import { TProductCart } from "@/data/types";
+import { useGlobalContext } from "@/contexts/store";
+
+// interface TProductInfo {
+//   slug: string
+//   image_id: string
+//   name: string
+//   description: string
+// }
 
 export default function InfoDetail(product: TProductCart) {
+
+  const { addToCart } = useGlobalContext()
+
   return (
     <Grid container spacing={2}>
-      <Grid xs={4}>
-        <Card sx={{ maxWidth: 345, margin: "auto" }} className={styles.card}>
-          <CardActionArea href={`/products/${product?.slug}`}>
+      <Grid >
+        <Card sx={{ margin: "auto", display: 'flex', flexDirection: 'row' }} className={styles.card}>
+          <CardActionArea>
             <CardMedia
               component="img"
-              height="300"
-              image={product?.urlImg}
+              height="400"
+              image={product?.image_id}
               alt="green iguana"
+              style={{ objectFit: 'contain' }}
             />
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="div">
-                {product?.name}
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                {product?.description}
-              </Typography>
-            </CardContent>
+
           </CardActionArea>
+          <CardContent style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-evenly' }}>
+            <Typography gutterBottom variant="h5" component="div">
+              {product?.name}
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              {product?.description}
+            </Typography>
+            <Typography variant="h5" color="teal" className={styles.typ}>
+              $ {product?.price}
+            </Typography>
+            <Button className={styles.button} onClick={() => addToCart(product)}>
+              Agregar
+            </Button>
+          </CardContent>
         </Card>
       </Grid>
-      <Grid xs={4} >
-        <Card className={styles.cards}>
-          <Typography variant="h5" color="text.secondary" className={styles.typ}>
-            Precio:
-          </Typography>
-          <Typography variant="h5" color="text.secondary" className={styles.typ}>
-            Puntuación:
-          </Typography>
-          <Button className={styles.button}>
-            Agregar
-          </Button>
-        </Card>
+      <Grid xs={8} >
+        {/* <Card className={styles.cards}> */}
+        {/* </Card> */}
       </Grid>
     </Grid>
   );

@@ -6,6 +6,8 @@ import CardActionArea from '@mui/material/CardActionArea';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import { teal } from '@mui/material/colors';
+import { Box } from '@mui/material';
+import styles from './Blog.module.css'
 
 interface FeaturedPostProps {
   post: {
@@ -14,6 +16,7 @@ interface FeaturedPostProps {
     image: string;
     imageLabel: string;
     title: string;
+    linkText: string;
   };
 }
 
@@ -21,30 +24,47 @@ export default function FeaturedPost(props: FeaturedPostProps) {
   const { post } = props;
 
   return (
-    <Grid item xs={12} md={6}>
-      <CardActionArea component="a" href="#">
-        <Card sx={{ display: 'flex' }}>
-          <CardContent sx={{ flex: 1 }}>
-            <Typography component="h2" variant="h5">
+    <Grid item xs={12} md={3} >
+      <CardActionArea component="a" href={post.linkText} target="_blank"  >
+        <Box sx={{ display: 'flex', position: 'relative' }}  >
+          <img
+            src={post.image}
+            alt={post.imageLabel}
+            style={{ width: '100%', height: 'auto', objectFit: 'cover' }}
+            className={styles.cardPost}
+          />
+          <Box
+            className={styles.cardPost}
+            sx={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              backgroundColor: 'rgba(0, 0, 0, 0.5)',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'center',
+              textAlign: 'center',
+              color: 'white',
+              padding: '16px',
+            }}
+          >
+            <Typography component="h6" variant="h5">
               {post.title}
             </Typography>
-            <Typography variant="subtitle1" color="text.secondary">
+            <Typography variant="caption" color="white">
               {post.date}
             </Typography>
-            <Typography variant="subtitle1" paragraph>
+            <Typography variant="caption" paragraph>
               {post.description}
             </Typography>
-            <Typography variant="subtitle1" color="teal">
+            <Typography variant="caption" color="white">
               Continuar leyendo...
             </Typography>
-          </CardContent>
-          <CardMedia
-            component="img"
-            sx={{ width: 160, display: { xs: 'none', sm: 'block' } }}
-            image={post.image}
-            alt={post.imageLabel}
-          />
-        </Card>
+          </Box>
+        </Box>
       </CardActionArea>
     </Grid>
   );
