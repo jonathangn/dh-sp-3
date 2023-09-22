@@ -9,10 +9,8 @@ import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import ShareIcon from '@mui/icons-material/Share';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { FaBolt, FaBeer, FaWineBottle, FaWineGlass, FaGlassWhiskey, FaFire, FaGlassMartini, FaWater } from 'react-icons/fa';
-
 import styles from "./ProductCard.module.css"
 import Button from '@mui/material/Button';
 import { useGlobalContext } from '@/contexts/store';
@@ -20,7 +18,7 @@ import { TProductCart } from '@/data/types';
 
 export default function ProductCard(product: TProductCart) {
 
-  const { userId, setUserId, cartItems, setCartItems, addToCart } = useGlobalContext();
+  const { addToCart } = useGlobalContext();
   const [expanded, setExpanded] = React.useState(false);
 
   const handleExpandClick = () => {

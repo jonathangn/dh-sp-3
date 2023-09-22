@@ -21,23 +21,10 @@ import { Poppins } from "next/font/google";
 import { useSession, signIn, signOut } from "next-auth/react";
 import Button from "@mui/material/Button";
 
-const pages = ["Inicio", "Productos", "Eventos", "Promociones", "Blog"];
-
 const poppins = Poppins({
   weight: ["300", "400"],
   style: ["normal", "italic"],
   subsets: ["latin"],
-});
-
-const theme = createTheme({
-  palette: {
-    primary: teal,
-    secondary: purple,
-  },
-  typography: {
-    fontSize: 16,
-    fontFamily: poppins.style.fontFamily,
-  },
 });
 
 function NavBar() {
@@ -50,7 +37,7 @@ function NavBar() {
     null
   );
 
-  const { userId, cartItems, showModal, setShowModal } = useGlobalContext();
+  const { cartItems, setShowModal } = useGlobalContext();
 
   let itemsNumber = cartItems.length
 
@@ -145,9 +132,6 @@ function NavBar() {
                   Productos
                 </Typography>
               </Link>
-              {/* <MenuItem>
-                <Link href="/offers">Ofertas</Link>
-              </MenuItem> */}
               <Link
                 href="/about"
                 className={`${pathname == "/about" ? styles.activeMov : ""} ${styles.link
@@ -223,17 +207,6 @@ function NavBar() {
                 Productos
               </Typography>
             </Link>
-
-            {/* <Link
-              href="/offers"
-              className={`${pathname == "/offers" ? styles.active : ""} ${styles.link
-                }`}
-            >
-              <Typography fontWeight="bold" textAlign="center" >
-                Ofertas
-              </Typography>
-            </Link> */}
-
             <Link
               href="/about"
               className={`${pathname == "/about" ? styles.active : ""} ${styles.link

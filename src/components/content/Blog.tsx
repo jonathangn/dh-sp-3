@@ -8,12 +8,6 @@ import FeaturedPost from '@/components/content/FeaturedPost';
 // import post2 from './posts/blog-post2.md';
 // import post3 from './posts/blog-post3.md';
 
-const sections = [
-  { title: 'Eventos', url: '#' },
-  { title: 'Comunidad', url: '#' },
-  { title: 'Maridajes', url: '#' },
-];
-
 const mainFeaturedPost = {
   title: 'Beneficios para tu salud',
   description:
@@ -86,7 +80,6 @@ export default function Blog() {
     <ThemeProvider theme={defaultTheme}>
       <CssBaseline />
       <main style={{ padding: "2rem" }}>
-        {/* <Header title="Blog" sections={sections} /> */}
         <MainFeaturedPost post={mainFeaturedPost} />
         <Grid container spacing={4}>
           {featuredPosts.map((post) => (
@@ -94,8 +87,8 @@ export default function Blog() {
           ))}
         </Grid>
         <Grid container spacing={5} sx={{ mt: 3 }}>
-          {/* <Main title="From the firehose" posts={posts} /> */}
-          {/* <Sidebar
+          {/* <Main title="From the firehose" posts={posts} />
+          <Sidebar
           title={sidebar.title}
           description={sidebar.description}
           archives={sidebar.archives}

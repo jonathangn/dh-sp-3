@@ -7,20 +7,12 @@ import { Poppins } from "next/font/google";
 import { NOSOTROS } from "@/data/data";
 import InfoCardNosotros from "./InfoCardNosotros";
 
-const inter = Inter({ subsets: ["latin"] });
-
 const poppins = Poppins({
   weight: ["300", "400"],
   style: ["normal", "italic"],
   subsets: ["latin"],
 });
 
-const theme = createTheme({
-  typography: {
-    fontSize: 16,
-    fontFamily: poppins.style.fontFamily,
-  },
-});
 
 export default function About() {
   return (

@@ -7,7 +7,6 @@ import Box from '@mui/material/Box';
 import Register from './Register';
 import LogIn from './LogIn';
 import styles from "./TabAccess.module.css"
-import { teal } from '@mui/material/colors';
 import { styled } from "@mui/material/styles";
 
 interface TabPanelProps {

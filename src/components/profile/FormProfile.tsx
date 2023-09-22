@@ -1,4 +1,4 @@
-import { Button, Input, TextField, styled } from "@mui/material";
+import { Button, TextField, styled } from "@mui/material";
 import { Resolver, useForm } from "react-hook-form";
 import styles from "./FormProfile.module.css"
 import { useSession } from "next-auth/react";
@@ -47,10 +47,8 @@ const resolver: Resolver<TFormValues> = async (values) => {
 export default function FormProfile() {
 
   const { data } = useSession()
-  const { register, handleSubmit, watch, formState: { errors } } = useForm<TFormValues>({ resolver });
-  const onSubmit = handleSubmit((data) => console.log(data));
-
-  // console.log(watch("firstName")); // watch input value by passing the name of it
+  const { register, handleSubmit, formState: { errors } } = useForm<TFormValues>({ resolver });
+  const onSubmit = handleSubmit((data) => { return data });
 
   return (
     <form onSubmit={onSubmit} className={styles.form}>
@@ -63,12 +61,10 @@ export default function FormProfile() {
 
       <div className={styles.input}>
         <CssTextField InputLabelProps={{ shrink: true, }} label="Apellido" variant="outlined" defaultValue={data?.user?.user?.last_name} {...register("lastName", { required: true })} />
-        {/* {errors.required && <span><small className={styles.error}>El campo es requerido</small></span>} */}
       </div>
 
       <div className={styles.input}>
         <CssTextField InputLabelProps={{ shrink: true, }} label="Rol" variant="outlined" disabled defaultValue={data?.user?.user?.Role} {...register("address", { required: true })} />
-        {/* {errors.required && <span><small className={styles.error}>El campo es requerido</small></span>} */}
       </div>
 
       <div>

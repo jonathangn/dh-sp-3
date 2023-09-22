@@ -20,9 +20,6 @@ export default function InfoCard(product: TProductCart) {
           <div className={`${styles.nombreCategoria}`}>
             {product?.name}
           </div>
-          {/* <Typography variant="body2" color="text.secondary">
-            {product?.description}
-          </Typography> */}
         </CardContent>
       </Link>
     </Card>

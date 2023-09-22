@@ -1,17 +1,12 @@
 'use client'
 import { PRODUCTS as rawProducts } from "@/data/prod";
-import { CATEGORIES, PRODUCTS } from "@/data/data";
 import InfoCard from "@/components/InfoCard";
 import Grid from "@mui/material/Unstable_Grid2";
 import styles from "./page.module.css";
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 import { TextField, Typography, styled } from "@mui/material";
 import { useGlobalContext } from "@/contexts/store";
 import { TProductApi, TProductCart } from "@/data/types";
-
-// const beers = PRODUCTS.filter((p) => p.category === "Cervezas");
-// const wines = PRODUCTS.filter((p) => p.category === "Vinos");
-// const energizers = PRODUCTS.filter((p) => p.category === "Energizantes");
 
 const CssTextField = styled(TextField)({
   background: 'white',
@@ -33,7 +28,6 @@ const CssTextField = styled(TextField)({
       borderColor: '#B2BAC2',
     },
     '&.Mui-focused fieldset': {
-      // borderColor: '#6F7E8C',
       borderColor: 'teal',
     },
   },
@@ -52,8 +46,6 @@ export default function Products() {
   useEffect(() => {
     setProductsStore(PRODUCTS)
   }, [])
-  // const drinks: string[] = ['beers', 'wines', 'energizers', 'coke', 'fernets', 'aguas', 'vodkas', 'shots', 'whiskys']
-  // console.log(PRODUCTS, 'prods')
   const beers = PRODUCTS?.filter((p) => p.Category === "Cerveza")
   const wines = PRODUCTS?.filter((p) => p.Category === "Vino")
   const energizers = PRODUCTS?.filter((p) => p.Category === "Energizante")

@@ -1,10 +1,8 @@
-import { TUserLog } from "@/data/types";
 import type { NextAuthOptions } from "next-auth";
 import { decode, encode } from "next-auth/jwt";
 import CredentialsProvider from "next-auth/providers/credentials";
 
 export const authOptions: NextAuthOptions = {
-    // export const authOptions = {
     session: {
         strategy: "jwt",
     },
@@ -33,13 +31,10 @@ export const authOptions: NextAuthOptions = {
                 })
 
                 const json = await res.json()
-                // console.log(json, 'jsonInAuth')
                 const user = await json?.data
                 if (user) {
-                    // console.log(user, 'user in Auth')
                     return user;
                 } else {
-                    // console.log('NO USER')
                     return null
                 }
             },
@@ -57,11 +52,10 @@ export const authOptions: NextAuthOptions = {
             if (token) {
                 session.user = token
             }
-            return session // The return type will match the one returned in `useSession()`
+            return session
         },
     },
     pages: {
         signIn: "/auth",
-        // signIn: "/auth",
     },
 };

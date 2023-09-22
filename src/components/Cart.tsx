@@ -1,9 +1,8 @@
 'use client'
 import { useGlobalContext } from '@/contexts/store'
-// import * as React from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import Dialog, { DialogProps } from '@mui/material/Dialog';
+import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
@@ -12,46 +11,23 @@ import AddCircle from '@mui/icons-material/AddBox';
 import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
-import Divider from '@mui/material/Divider';
-import ListItemAvatar from '@mui/material/ListItemAvatar';
-import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import { TProductCart } from '@/data/types';
 import Typography from '@mui/material/Typography';
-import { createTheme } from '@mui/material/styles';
 import { Poppins } from 'next/font/google';
 import ClearAllIcon from '@mui/icons-material/ClearAll';
 import styles from './Cart.module.css'
-import Link from 'next/link';
-import { Router } from '@mui/icons-material';
 import { useRouter } from 'next/navigation';
-
-
-const poppins = Poppins({
-  weight: ["300", "400"],
-  style: ["normal", "italic"],
-  subsets: ["latin"],
-});
-
-const theme = createTheme({
-  typography: {
-    fontSize: 16,
-    fontFamily: poppins.style.fontFamily,
-  },
-});
 
 export default function Cart({ }) {
 
   const router = useRouter()
-  // const [maxWidth, setMaxWidth] = React.useState<DialogProps['maxWidth']>('sm');
-  const { cartItems, setCartItems, showModal, setShowModal, getCartTotal, addToCart, removeFromCart, removeReference, clearCart } = useGlobalContext()
+  const { cartItems, showModal, setShowModal, getCartTotal, addToCart, removeFromCart, removeReference, clearCart } = useGlobalContext()
 
   const cartTotal = getCartTotal();
-  const cartItemsLength = cartItems.length > 0 ?? false;
 
   const close = () => {
     setShowModal(false)
-    // console.log(cartItems)
   }
 
   const goToCheckout = () => {
@@ -59,39 +35,6 @@ export default function Cart({ }) {
     setShowModal(false)
   }
 
-  // const notifyRemovedFromCart = (item) => toast.error(`${item.title} removed from cart!`, {
-  //   position: 'top-center',
-  //   autoClose: 2000,
-  //   hideProgressBar: true,
-  //   closeOnClick: true,
-  //   pauseOnHover: true,
-  //   draggable: true,
-  //   theme: 'colored',
-  //   style: {
-  //     backgroundColor: '#000',
-  //     color: '#fff'
-  //   }
-  // })
-
-  // const notifyCartCleared = () => toast.error(`Cart cleared!`, {
-  //   position: 'top-center',
-  //   autoClose: 2000,
-  //   hideProgressBar: true,
-  //   closeOnClick: true,
-  //   pauseOnHover: true,
-  //   draggable: true,
-  //   theme: 'colored',
-  //   style: {
-  //     backgroundColor: '#000',
-  //     color: '#fff'
-  //   }
-  // })
-
-  // const handleRemoveFromCart = (product) => {
-  //   removeFromCart(product);
-  // }
-
-  {/* <ToastContainer /> */ }
   return (
     showModal && (
       <>

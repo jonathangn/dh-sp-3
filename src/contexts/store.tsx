@@ -1,12 +1,9 @@
 'use client';
 import { createContext, useContext, Dispatch, SetStateAction, useState, useEffect, FC, ReactNode } from "react";
-import { TProductCart, TUser } from "@/data/types"
+import { TProductCart } from "@/data/types"
 import { useForm } from "react-hook-form";
-
-const MAIN_API = process.env.NEXT_PUBLIC_MAIN_API
 interface Props {
     children?: ReactNode
-    // any props that come into the component
 }
 
 export type TStepValues = {
@@ -75,37 +72,7 @@ export const GlobalContextProvider = ({ children }: Props) => {
         mode: 'all',
     })
 
-    //
-    // const [products, setProducts] = useState<[] | TProductApi[]>([])
     const [productsStore, setProductsStore] = useState<[] | TProductCart | any>([])
-
-    // async function getProducts() {
-    //     //  const orders = admin && await axios.get("http://localhost:3000/api/orders");
-    //     const res = await fetch(`${MAIN_API}/products/`, {
-    //         'mode': 'no-cors',
-    //         'headers': {
-    //             'Access-Control-Allow-Origin': '*',
-    //         }
-    //     })
-    //     if (res) {
-    //         try {
-    //             let prods = await res.json()
-    //             let { data } = prods
-    //             // let productsNormal: TProductCart[] = [];
-    //             data.forEach((e: TProductApi) => {
-    //                 return productsStore.push({ ...e, top: false, slug: e.name.replace(/ /g, '-'), quantity: 0 });
-    //             });
-    //             // setProductsStore(productsNormal)
-    //             // console.log(productsNormal, 'Desde Store')
-    //             // console.log(productsStore, 'REPITELO')
-    //         } catch (error) {
-    //             console.log(error)
-    //         }
-    //     }
-    // }
-    // getProducts()
-
-    //  
 
     const [userId, setUserId] = useState(0);
     const [isAdmin, setIsAdmin] = useState(false)
@@ -113,19 +80,6 @@ export const GlobalContextProvider = ({ children }: Props) => {
     const [cartItems, setCartItems] = useState<[] | TProductCart[]>([])
 
     useEffect(() => {
-        // async function getProducts() {
-        //     const fetchProd = await fetch("localhost/3000/api/products",)
-        //     const products = await fetchProd.json()
-        //     const { data } = products
-
-        //     console.log(data.data, 'DESDE STORE')
-        //     return data.data
-        // }
-
-        // const data = getProducts()
-        // setProductsStore(data)
-        // console.log(data, 'DESDE STORE')
-
         let cartItems = localStorage.getItem('cartItems') ? JSON.parse(localStorage.getItem('cartItems')!) : []
         setCartItems(cartItems)
     }, [])
@@ -172,10 +126,6 @@ export const GlobalContextProvider = ({ children }: Props) => {
         setCartItems([]);
     };
 
-    // const getCartTotal = () => {
-    //     return cartItems.reduce<number>((total: number, item: TProductCart) => total + item.price * item.quantity!, 0);
-    // };
-
     const getCartTotal = () => {
         let cartTotal = 0
         cartItems.map((item) => {
@@ -194,8 +144,7 @@ export const GlobalContextProvider = ({ children }: Props) => {
 
     useEffect(() => {
         localStorage.setItem('cartItems', JSON.stringify(cartItems));
-    }, [cartItems]); // Include cartItems as a dependency here
-
+    }, [cartItems]);
 
     return (
         <GlobalContext.Provider value={{ showModal, setShowModal, userId, setUserId, cartItems, setCartItems, addToCart, removeFromCart, clearCart, getCartTotal, removeReference, checkOutForm, productsStore, setProductsStore, isAdmin, setIsAdmin }}>

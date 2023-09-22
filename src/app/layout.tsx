@@ -6,9 +6,6 @@ import "./globals.css";
 
 import { GlobalContextProvider } from "@/contexts/store";
 import { NextAuthProvider } from "@/contexts/auth"
-// import { SessionProvider } from "next-auth/react"
-
-import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 

@@ -3,32 +3,14 @@ import * as React from 'react';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
 import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { createTheme, styled, ThemeProvider } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
 import styles from "./TabAccess.module.css";
-import { signIn, useSession } from 'next-auth/react';
+import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
-import { Resolver, SubmitHandler, useForm } from 'react-hook-form';
-import { Mode } from '@mui/icons-material';
-import { useGlobalContext } from '@/contexts/store';
+import { useForm } from 'react-hook-form';
 
-function Copyright(props: any) {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link color="inherit" href="https://berebere.com/">
-        Bere Bere
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
 
 const CssTextField = styled(TextField)({
   '& label.Mui-focused': {
@@ -45,13 +27,10 @@ const CssTextField = styled(TextField)({
       borderColor: '#B2BAC2',
     },
     '&.Mui-focused fieldset': {
-      // borderColor: '#6F7E8C',
       borderColor: 'teal',
     },
   },
 });
-
-const defaultTheme = createTheme();
 
 type userFormLogin = {
   Email: string,
@@ -61,8 +40,6 @@ type userFormLogin = {
 export default function LogIn() {
   const [error, setError] = React.useState('')
   const router = useRouter()
-  const { isAdmin, setIsAdmin } = useGlobalContext()
-  const { data: dataSession } = useSession()
 
   const { register, handleSubmit, watch, formState: { errors, isValid } } = useForm<userFormLogin>()
 
@@ -72,21 +49,11 @@ export default function LogIn() {
       password: data.Password,
       redirect: false
     }).then((res) => {
-      console.log(res, 'resINLogin')
       if (res?.error) return setError(res.error)
       if (res?.ok) {
-        // // console.log(res.data, 'res')
-        // console.log(resSignIn, 'resSignIn')
-        // // const data = res.json()
-        // if (data?.Role === "admin"){
-        //   console.log()
-        //     localStorage.setItem('userRole', JSON.stringify(res));
-        // }        
-        console.log(dataSession)
         return router.push('/')
       }
     });
-    console.log(resSignIn, 'resSignIn')
   })
 
   return (
@@ -139,11 +106,6 @@ export default function LogIn() {
             <>
               {errors?.Password?.type === "required" && <small>El campo es requerido</small>}
             </>
-
-            {/* <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Mantener sesión iniciada"
-            /> */}
             <Button
               disabled={!isValid}
               type="submit"

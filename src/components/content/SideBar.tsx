@@ -14,7 +14,6 @@ interface SidebarProps {
 }
 
 function handleClick() {
-  console.log("Clickeaste");
 }
 
 export default function Sidebar(props: SidebarProps) {

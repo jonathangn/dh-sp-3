@@ -1,47 +1,4 @@
 
-export const CARS = [
-    {
-        quantity: '',
-        product: '',
-    }
-]
-
-export const BUYS = [
-    {
-        date: '',
-        address: '',
-        user: '',
-    }
-]
-
-export const ADDRESSS = [
-    {
-        street: '',
-        number: '',
-        city: '',
-        state: '',
-        country: '',
-    }
-]
-
-export const USERS = [
-    {
-        userName: '',
-        password: '',
-        name: '',
-        lastname: '',
-        email: '',
-        rol: '',
-    }
-]
-
-export const IMAGE = [
-    {
-        title: '',
-        urlImg: '',
-    }
-]
-
 export const CATEGORIES = [
     {
         id: 1,

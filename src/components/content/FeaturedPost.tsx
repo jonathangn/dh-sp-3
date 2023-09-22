@@ -1,10 +1,6 @@
 import * as React from 'react';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import { teal } from '@mui/material/colors';
 import { Box } from '@mui/material';
 import styles from './Blog.module.css'
 import Link from 'next/link';

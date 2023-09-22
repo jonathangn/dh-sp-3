@@ -1,8 +1,5 @@
-// "use client";
 import Button from "@mui/material/Button";
 import { useSession, signIn, signOut } from "next-auth/react";
-import Link from "next/link";
-
 
 export default function Buttons() {
     const { data: session } = useSession()
@@ -25,15 +22,3 @@ export default function Buttons() {
         </>
     )
 }
-
-// export const RegisterButton = () => {
-//     return (
-//         <Link href="/register" style={{ marginRight: 10 }}>
-//             Regístrarse
-//         </Link>
-//     );
-// };
-
-// export const ProfileButton = () => {
-//     return <Link href="/profile">Profile</Link>;
-// };

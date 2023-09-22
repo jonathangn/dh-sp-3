@@ -1,10 +1,8 @@
 'use client'
 import * as React from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
-import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
-import Toolbar from '@mui/material/Toolbar';
 import Paper from '@mui/material/Paper';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
@@ -12,15 +10,12 @@ import StepLabel from '@mui/material/StepLabel';
 import Button from '@mui/material/Button';
 import Link from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
-import { createMuiTheme, createTheme, ThemeProvider } from '@mui/material/styles';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Address from './Address';
 import Payment from './Payment';
 import Review from './Review';
-import styles from './Steps.module.css'
-import { teal } from '@mui/material/colors';
 import { FormProvider, useForm } from 'react-hook-form';
-import { TStepValues, useGlobalContext } from '@/contexts/store';
-import { DevTool } from '@hookform/devtools';
+import { useGlobalContext } from '@/contexts/store';
 import { useEffect } from 'react';
 
 const steps = ['Dirección de envío', 'Detalles de pago', 'Resumen del pedido'];
@@ -63,7 +58,6 @@ export default function Checkout() {
 
     const methods = useForm()
     const { setCartItems } = useGlobalContext()
-    // const { register, handleSubmit, formState, control } = useForm(checkOutForm)
     const { control, formState: { isValid } } = methods
 
     const onSubmit = (data: any) => {
@@ -140,7 +134,6 @@ export default function Checkout() {
                                     </Box>
                                 </form>
                             </FormProvider>
-
                         </React.Fragment>
                     )}
                 </Paper>

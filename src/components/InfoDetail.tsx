@@ -10,13 +10,6 @@ import styles from "./InfoDetail.module.css"
 import { TProductCart } from "@/data/types";
 import { useGlobalContext } from "@/contexts/store";
 
-// interface TProductInfo {
-//   slug: string
-//   image_id: string
-//   name: string
-//   description: string
-// }
-
 export default function InfoDetail(product: TProductCart) {
 
   const { addToCart } = useGlobalContext()
@@ -52,8 +45,6 @@ export default function InfoDetail(product: TProductCart) {
         </Card>
       </Grid>
       <Grid xs={8} >
-        {/* <Card className={styles.cards}> */}
-        {/* </Card> */}
       </Grid>
     </Grid>
   );
