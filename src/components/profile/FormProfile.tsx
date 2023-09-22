@@ -55,7 +55,7 @@ export default function FormProfile() {
   return (
     <form onSubmit={onSubmit} className={styles.form}>
 
-      <h3 style={{ fontFamily: 'Poppins', marginBottom: '2rem' }}>Actualiza aquí tus datos</h3>
+      <h3 style={{ fontFamily: 'Poppins', marginBottom: '2rem', color: 'teal' }}>Actualiza aquí tus datos</h3>
       <div className={styles.input}>
         <CssTextField InputLabelProps={{ shrink: true, }} label="Nombre" variant="outlined" defaultValue={data?.user?.user?.first_name} {...register("firstName")} />
         {errors?.firstName && <small>{errors.firstName.message}</small>}

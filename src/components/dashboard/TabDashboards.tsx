@@ -62,7 +62,7 @@ export default function BasicTabs() {
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }} >
         <Tabs className={styles.tabs} value={value} centered onChange={handleChange} aria-label="basic tabs example" TabIndicatorProps={{ style: { backgroundColor: "teal" } }} >
           <StyledTab className={styles.tab} label="Reporte de Compras" {...a11yProps(0)} />
-          <StyledTab className={styles.tab} label="Reporte siguiente" {...a11yProps(1)} />
+          <StyledTab className={styles.tab} label="Dashboard" {...a11yProps(1)} />
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>

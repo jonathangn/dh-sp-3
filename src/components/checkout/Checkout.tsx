@@ -21,6 +21,7 @@ import { teal } from '@mui/material/colors';
 import { FormProvider, useForm } from 'react-hook-form';
 import { TStepValues, useGlobalContext } from '@/contexts/store';
 import { DevTool } from '@hookform/devtools';
+import { useEffect } from 'react';
 
 const steps = ['Dirección de envío', 'Detalles de pago', 'Resumen del pedido'];
 
@@ -61,15 +62,19 @@ export default function Checkout() {
     const [activeStep, setActiveStep] = React.useState(0);
 
     const methods = useForm()
-    // const { checkOutForm } = useGlobalContext()
+    const { setCartItems } = useGlobalContext()
     // const { register, handleSubmit, formState, control } = useForm(checkOutForm)
     const { control, formState: { isValid } } = methods
 
     const onSubmit = (data: any) => {
 
-
-        console.log(data)
     }
+
+    useEffect(() => {
+        if (activeStep === steps.length) {
+            setCartItems([])
+        }
+    }, [activeStep])
 
     const handleNext = () => {
         setActiveStep(activeStep + 1);
@@ -106,10 +111,11 @@ export default function Checkout() {
                                 Gracias por generar tu orden.
                             </Typography>
                             <Typography variant="subtitle1">
-                                Your order number is #2001539. We have emailed your order
-                                confirmation, and will send you an update when your order has
-                                shipped.
+                                Nos complace haber atendido tu solicitud.
                             </Typography>
+                            <Link href="/">
+                                Seguir comprando
+                            </Link>
                         </React.Fragment>
                     ) : (
                         <React.Fragment>

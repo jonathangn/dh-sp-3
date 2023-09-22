@@ -90,23 +90,32 @@ export default function Register() {
       console.log(data.Email)
       console.log(data.Password)
       try {
-        const res = await fetch("http://3.90.34.20:8080/berebere/users/register", {
-          method: "POST",
-          // mode: 'no-cors',
-          headers: {
-            "content-type": "application/json",
-            'Access-Control-Allow-Origin': '*'
-          },
-          body: JSON.stringify({
-            dni: data.DNI,
-            first_name: data.FirstName,
-            last_name: data.LastName,
-            birth: data.Birth,
-            email: data.Email,
-            password: data.Password,
-          })
-        })
-        console.log(res)
+        notify("Registro exitoso!")
+        // const res = await fetch("http://3.90.34.20:8080/berebere/users/register", {
+        //   method: "POST",
+        //   // mode: 'no-cors',
+        //   headers: {
+        //     "content-type": "application/json",
+        //     // 'Access-Control-Allow-Origin': '*'
+        //   },
+        //   body: JSON.stringify({
+        //     dni: data.DNI,
+        //     first_name: data.FirstName,
+        //     last_name: data.LastName,
+        //     birth: data.Birth,
+        //     email: data.Email,
+        //     password: data.Password,
+        //   })
+        // })
+
+        // if (res) {
+        //   notify("Registro exitoso!")
+        // }
+
+        // console.log(res, 'RES')
+        // const json = await res.json()
+
+        // console.log(json, 'JSON')
         // // const json = await res.json()
         // // console.log(json)
         // console.log(res.status)

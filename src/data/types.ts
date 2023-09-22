@@ -87,3 +87,17 @@ export type TUserLog = {
     Role: string
 }
 
+export type TCreateProduct = {
+    product_code: string,
+    name: string,
+    brand: string,
+    model: string,
+    alcohol_content: number,
+    origin: string,
+    price: number,
+    description: string,
+    image_id: number,
+    category_id: number,
+    user_id: number
+}
+

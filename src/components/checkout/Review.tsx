@@ -22,7 +22,7 @@ export default function Review() {
             <List disablePadding>
                 {cartItems.map((product) => (
                     <ListItem key={product.name} sx={{ py: 1, px: 0 }}>
-                        <ListItemText primary={product.name} secondary={product.description} />
+                        <ListItemText primary={product.name} secondary={product.quantity} />
                         <Typography variant="body2">{product.price}</Typography>
                     </ListItem>
                 ))}
@@ -34,7 +34,7 @@ export default function Review() {
                     </Typography>
                 </ListItem>
             </List>
-            <Grid container spacing={2}>
+            {/* <Grid container spacing={2}>
                 <Grid item xs={12} sm={6}>
                     <Typography variant="h6" gutterBottom sx={{ mt: 2 }}>
                         Entrega
@@ -59,7 +59,7 @@ export default function Review() {
                         ))}
                     </Grid>
                 </Grid>
-            </Grid>
+            </Grid> */}
         </>
     );
 }
